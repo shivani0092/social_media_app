@@ -1,0 +1,7 @@
+<div id="comments_<%= post.id %>">
+  <% post.comments.each do |comment| %>
+    <p>
+      <%= comment.description %>
+    </p>
+  <% end %>
+</div>

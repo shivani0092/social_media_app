@@ -1,0 +1,34 @@
+<%= form_with(model: [current_user, current_user.posts.build], local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <% if post&.avatar&.url %>
+    <%= image_tag(post.avatar.url) %>
+    <%= form.label :remove_avatar do %>
+      <%= form.check_box :remove_avatar %>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.file_field :avatar %>
+    <%= form.hidden_field :avatar_cache %>
+  </div>  
+    
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

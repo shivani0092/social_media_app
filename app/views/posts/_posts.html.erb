@@ -1,0 +1,26 @@
+<% if current_user.present? %>  
+  <h1>Posts</h1>
+  <% posts.each do |post| %>
+    <div id="<%= post.id %>">
+      <p>
+        <%= post.description %>
+      </p>
+      <p> 
+        <% if post&.avatar&.url %>
+          <%= image_tag(post.avatar.url) %>
+        <% end %> 
+      </p>   
+      <% like = post.like %>
+      <%= "#{like.length} Like(s) | " %>
+      <% if like.include? current_user.id %>
+        <%= link_to 'UnLike', unlike_user_post_path(current_user, post),method: :get, remote: true, class: 'unlike_post' %>
+      <% else %>
+        <%= link_to 'Like', like_user_post_path(current_user, post),method: :get, remote: true, class: 'like_post' %>
+      <% end %>   
+      <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
+      <%= link_to 'Remove', user_post_path(current_user, post), method: :Delete, remote: true %>
+      <%= render 'comments/create', comment: post.comments.build, post: post, user: current_user %>
+      <%= render 'comments/index', post: post %>
+    </div>  
+  <% end %>
+<% end %> 
