@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def session_authenticate
     redirect_to root_path unless current_user.present?
-  end	
+  end
 
   def record_not_found
     redirect_to page_path('not_found')
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def not_found
     respond_to do |format|
       format.html { render file: "#{Rails.root}/public/404.html", status: 404 }
-      format.js { render :nothing => true, :status => 404 }
+      format.js { render nothing: true, :status => 404 }
     end
   end
 
@@ -25,4 +25,5 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, :avatar, :small_bio])
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :avatar, :small_bio])
     end
+
 end

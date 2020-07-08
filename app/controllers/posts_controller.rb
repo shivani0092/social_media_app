@@ -35,9 +35,8 @@ class PostsController < ApplicationController
   end
 
   def update_show(user)
-    @posts = Post.all.order('created_at DESC')
     respond_to do |format|
-      format.html { redirect_to users_path}
+      format.html { redirect_to users_path }
       format.js   {}
     end
   end
@@ -57,13 +56,15 @@ class PostsController < ApplicationController
     update_show(@user)
   end
 
-  private      
+  private  
+
     def set_user_post  
-      @user = User.find(params[:user_id])
-      @post = @user.posts.find(params[:id])
+      user = User.find(params[:user_id])
+      @post = user.posts.find(params[:id])
     end
 
     def set_post
+      @user = User.find(params[:user_id])
       @post = Post.find(params[:id])
     end
       

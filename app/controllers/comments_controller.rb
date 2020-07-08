@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.create(comment_params)
     respond_to do |format|
-      format.html {redirect_to users_path}
+      format.html { redirect_to users_path }
       format.js {}
     end
   end

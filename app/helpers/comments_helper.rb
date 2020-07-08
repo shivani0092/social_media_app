@@ -1,2 +1,7 @@
 module CommentsHelper
+  
+  def post_comments(post)
+    post.comments.compact
+  end
+
 end

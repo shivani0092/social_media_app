@@ -1,12 +1,14 @@
-<div id="comments_<%= post.id %>">
-  <ul class="list-group">
-    <% post.comments.each do |comment| %>
-      <div class="col-sm-12 btn comment-subcontainer">
-        <li class="list-group-item">
-          <p><b><%= comment&.user&.name %></b></p>
-          <p><%= comment.description %></p>
-        </li>
-      </div>  
-    <% end %>
-  </ul>  
-</div>
+<% if post_comments(post).any? %>  
+  <div id="comments_<%= post.id %>">
+    <ul class="list-group">
+      <% post_comments(post).each do |comment| %>
+        <div class="col-sm-12 btn comment-subcontainer">
+          <li class="list-group-item">
+            <p><b><%= comment&.user&.name %></b></p>
+            <p><%= comment.description %></p>
+          </li>
+        </div>  
+      <% end %>
+    </ul>  
+  </div>
+<% end %>  

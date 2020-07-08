@@ -4,7 +4,7 @@ FactoryGirl.define do
     name 'shivani'
     email 'shivani.gupta@gmail.com'
     password '12345678'
-    password_confirmation "12345678"
+    password_confirmation '12345678'
     avatar '/assets/images/image.jpg'
     small_bio 'test validation'
   end
@@ -14,7 +14,7 @@ FactoryGirl.define do
     name ''
     email 'shivani.gupta@gmail.com'
     password '12345678'
-    password_confirmation "12345678"
+    password_confirmation '12345678'
     avatar '/assets/images/image.jpg'
     small_bio 'test validation'
   end

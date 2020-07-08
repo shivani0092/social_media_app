@@ -1,4 +1,4 @@
-<% if current_user.present? %>  
+<% if current_user.present? && posts.any? %>  
   <h2 class="align-middle" >Posts</h1>
   <% posts.each do |post| %>
     <div id="<%= post.id %>"><br/>
@@ -33,7 +33,7 @@
                 </dir>  
               </dir> 
               <div class="comments-create-container"> 
-                <%= render 'comments/create', comment: post.comments.build, post: post, user: current_user %>
+                <%= render 'comments/create', comment: add_post_comment(post), post: post, user: current_user %>
               </div>
               <div class="comments-create-container">   
                 <%= render 'comments/index', post: post %>
