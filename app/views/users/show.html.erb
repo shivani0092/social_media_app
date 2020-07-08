@@ -1,3 +1,18 @@
-<div id="show_posts">
-  <%= render partial: "posts/posts", locals: { posts: @posts } %>
-</div>
+<div class="container user-login">
+ <div class="row justify-content-center align-items-center">
+   <div class="col-10 col-md-8 col-lg-6 user-container">
+    <div id="show_posts">
+      <h2 class="align-middle">Users Profile</h1>
+      <div class="user-containers">  
+        <dir class="col-sm-5">
+          <% if url = avatar_url(@user) %>
+            <%= image_tag(url) %>
+          <% end %> 
+        </dir>
+        <dir class="col-sm-7"> <%= @user.small_bio %> </div>
+      </div>  
+    </div>
+  </div>
+</div> 
+<br/>
+<%= render partial: "posts/posts", locals: { posts: user_posts(@user) } %>

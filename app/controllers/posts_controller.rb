@@ -1,13 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user_post, only: [:like, :unlike, :destroy, :edit, :update]
-
-  def index
-    @posts = current_user.posts.order('created_at DESC')
-  end  
+  before_action :set_user_post, only: [:destroy, :edit, :update]
+  before_action :set_post, only: [:like, :unlike]
 
   def new
-    @post  = current_user.posts.new
+    @post = current_user.posts.new
   end
 
   def edit
@@ -17,7 +14,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Post was successfully created.' }
       else
         format.html { render :new }
       end
@@ -40,7 +37,7 @@ class PostsController < ApplicationController
   def update_show(user)
     @posts = Post.all.order('created_at DESC')
     respond_to do |format|
-      format.html { redirect_to user_path }
+      format.html { redirect_to users_path}
       format.js   {}
     end
   end
@@ -48,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update_attributes(post_params)
-        format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -65,7 +62,11 @@ class PostsController < ApplicationController
       @user = User.find(params[:user_id])
       @post = @user.posts.find(params[:id])
     end
-    
+
+    def set_post
+      @post = Post.find(params[:id])
+    end
+      
     def post_params
       params.require(:post).permit(:user_id, :description, :avatar, :avatar_cache)
     end

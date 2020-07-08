@@ -1,6 +1,10 @@
-<h1>Editing Post</h1>
+<div class="container user-login">
+ <div class="row justify-content-center align-items-center">
+   <div class="col-10 col-md-8 col-lg-6 user-container"> 
+      <h2 class="align-middle" >Update Post</h2>
+      <%= render 'form', post: @post %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', post: @post %>
 
-<%= link_to 'Show', user_post_path(current_user, @post) %> |
-<%= link_to 'Back', posts_path %>

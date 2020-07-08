@@ -1,26 +1,47 @@
 <% if current_user.present? %>  
-  <h1>Posts</h1>
+  <h2 class="align-middle" >Posts</h1>
   <% posts.each do |post| %>
-    <div id="<%= post.id %>">
-      <p>
-        <%= post.description %>
-      </p>
-      <p> 
-        <% if post&.avatar&.url %>
-          <%= image_tag(post.avatar.url) %>
-        <% end %> 
-      </p>   
-      <% like = post.like %>
-      <%= "#{like.length} Like(s) | " %>
-      <% if like.include? current_user.id %>
-        <%= link_to 'UnLike', unlike_user_post_path(current_user, post),method: :get, remote: true, class: 'unlike_post' %>
-      <% else %>
-        <%= link_to 'Like', like_user_post_path(current_user, post),method: :get, remote: true, class: 'like_post' %>
-      <% end %>   
-      <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
-      <%= link_to 'Remove', user_post_path(current_user, post), method: :Delete, remote: true %>
-      <%= render 'comments/create', comment: post.comments.build, post: post, user: current_user %>
-      <%= render 'comments/index', post: post %>
+    <div id="<%= post.id %>"><br/>
+      <div class="container user-login">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-10 col-md-8 col-lg-6 user-container">
+            <div class="row post-card">
+              <dir class="col-sm-5">
+                <% if url = avatar_url(post) %>
+                  <%= image_tag(url) %>
+                <% end %> 
+              </dir>
+              <dir class="col-sm-7">
+                <%= post.description %>
+              </dir>
+
+              <dir class="col-sm-12 m-0 p-0 f-16">  
+                <dir class="col-sm-6">   
+                  <% like = post.like %>
+                  <%= "#{like.length} Like(s) | " %>
+                  <% if like.include? current_user.id %>
+                    <%= link_to 'UnLike', unlike_user_post_path(current_user, post),method: :get, remote: true, class: 'unlike_post' %>
+                  <% else %>
+                    <%= link_to 'Like', like_user_post_path(current_user, post),method: :get, remote: true, class: 'like_post' %>
+                  <% end %>
+                </dir>
+                <dir class="col-sm-6"> 
+                  <% if post.user == current_user %>    
+                    <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
+                    <%= link_to 'Remove', user_post_path(current_user, post), method: :Delete, remote: true %>
+                  <%end%>  
+                </dir>  
+              </dir> 
+              <div class="comments-create-container"> 
+                <%= render 'comments/create', comment: post.comments.build, post: post, user: current_user %>
+              </div>
+              <div class="comments-create-container">   
+                <%= render 'comments/index', post: post %>
+              </div> 
+            </div>    
+          </div>
+        </div>
+      </div>      
     </div>  
   <% end %>
 <% end %> 

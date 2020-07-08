@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  root 'users#show'
-  resources :users do 
-    resources :posts do
+  root 'users#index'
+  resources :users, only: [:show, :index] do 
+    resources :posts, except: [:show, :index] do
       member do
         get 'like', to: "posts#like"
         get 'unlike', to: "posts#unlike"
       end
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :index]
     end
   end 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
+  
   def show
- 	@posts = Post.all.order('created_at DESC')
+    @user = current_user || User.find(params[:id])
   end
+
+  def index
+    @posts = Post.all
+  end 
+
 end

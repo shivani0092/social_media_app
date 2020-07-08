@@ -2,6 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.user-container{
-  background-image: #000000;
+.user-login{
+  .checkbox{
+    margin: 12px 0 12px 21px;
+    label{
+      padding-left: 0;
+    }
+  }
+  .user-container {
+    padding: 10px 10px 20px 10px;
+    border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 10px 10px 5px #aaaaaa;
+  }
+  .login-btn{
+    margin-bottom: 12px;
+  }
+  .post.avatar-align {
+    margin: 0 0 0 108px;
+  }
+}
+.user-signup{
+  .avatar-align {
+    margin: 0 0 0 110px;
+  }
+}
+.justify-content-center.align-items-center {
+  justify-content: center;
+  display: flex;
+}
+.align-middle {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.show_posts{
+  margin-bottom: 100px;
+}
+.avatar-align {
+  margin-left: 109px;
+}
+.navbar-default{
+  .container-fluid{
+    .navbar-header{
+      .navbar-brand{
+        color: black;
+      }
+    }
+  }
+}
+.m-0{
+  margin: 0;
+}
+.p-0{
+  padding: 0 !important;
+}
+.f-16{
+  font-size: 16px;
 }

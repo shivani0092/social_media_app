@@ -1,7 +1,12 @@
 <div id="comments_<%= post.id %>">
-  <% post.comments.each do |comment| %>
-    <p>
-      <%= comment.description %>
-    </p>
-  <% end %>
+  <ul class="list-group">
+    <% post.comments.each do |comment| %>
+      <div class="col-sm-12 btn comment-subcontainer">
+        <li class="list-group-item">
+          <p><b><%= comment&.user&.name %></b></p>
+          <p><%= comment.description %></p>
+        </li>
+      </div>  
+    <% end %>
+  </ul>  
 </div>

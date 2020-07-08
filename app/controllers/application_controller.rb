@@ -1,14 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from AbstractController::ActionNotFound, with: :not_found
+
   def session_authenticate
     redirect_to root_path unless current_user.present?
   end	
 
-  rescue_from ActionController::RoutingError do |exception|
-    logger.error 'Routing error occurred'
-    render 'errors/404'
+  def record_not_found
+    redirect_to page_path('not_found')
+  end
+
+  def not_found
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404.html", status: 404 }
+      format.js { render :nothing => true, :status => 404 }
+    end
   end
 
   protected
