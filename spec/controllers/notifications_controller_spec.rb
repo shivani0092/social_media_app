@@ -17,7 +17,7 @@ RSpec.describe Notifications::NotificationsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
       post = FactoryBot.create(:post)
-      comment = FactoryBot.create(:comment)
+      comment = FactoryBot.create(:comment, post_id: post.id)
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post )
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post, target_type: 'Like')
       delete :clean, params: { use_route: '/notifications/notifications' } 

@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'rspec/rails'
-require 'devise'
 
 RSpec.describe UsersController, type: :controller do
   include Devise::Test::ControllerHelpers
