@@ -30,13 +30,16 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path %></li>
-            <li><%= link_to "Profile", main_app.user_path(current_user) %></li>
-            <li><%= link_to "Edit profile", main_app.edit_user_registration_path %></li>
-            <li><%= link_to "Logout", main_app.destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'Profile', main_app.user_path(current_user) %></li>
+            <li><%= link_to 'Edit profile', main_app.edit_user_registration_path %></li>
+            <li><%= link_to 'Logout', main_app.destroy_user_session_path, method: :delete %></li>
+            <li class="link-notifications"><%= link_to fa_icon("bell"), notifications_path %></li>
+            <span class='notification_unread_count'>
+              <%= pluralize(Notification.unread_count(current_user), '')%>
+            </span>
           <%else%>
-            <li><%= link_to "Sign up", main_app.new_user_registration_path %></li>
-            <li><%= link_to "Login", main_app.new_user_session_path %></li>
+            <li><%= link_to 'Sign up', main_app.new_user_registration_path %></li>
+            <li><%= link_to 'Login', main_app.new_user_session_path %></li>
           <%end%>
         </ul>  
       </div>

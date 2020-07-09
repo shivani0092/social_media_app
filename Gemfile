@@ -34,6 +34,7 @@ gem 'notifications'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'bootstrap-sass'
+gem 'font_awesome5_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -13,9 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'font_awesome5.css';
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
 body {
   background: #DCDCDC;
+}
+.navbar-default{
+  .notification_unread_count {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    background: red;
+    font-size: 15px;
+    border: 5px solid red;
+    border-radius: 50%;
+    width: 25px;
+    padding: 0 0 0 3px;
+  }
+  .container-fluid{
+    li{
+      font-size: 15px;
+    }
+  }
 }
