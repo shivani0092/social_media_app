@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
-  before_action :set_post, only: [:like, :unlike, :distroy]
+  before_action :set_post, only: [:like, :unlike]
+  before_action :set_user_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -51,7 +52,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = @user.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(post_params)
         format.html { redirect_to users_path, notice: 'Post was successfully updated.' }
@@ -71,6 +71,10 @@ class PostsController < ApplicationController
     def set_user  
       @user = User.find(params[:user_id])
     end
+    
+    def set_user_post
+      @post = @user.posts.find(params[:id])
+    end  
 
     def set_post
       @post = Post.find(params[:id])
