@@ -48,6 +48,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'capybara', '>= 2.15'  
+  gem 'rails-controller-testing'
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
