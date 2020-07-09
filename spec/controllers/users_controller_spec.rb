@@ -2,8 +2,8 @@ require 'spec_helper'
 
 RSpec.describe UsersController, type: :controller do
   include Devise::Test::ControllerHelpers
-  describe "Sessions" do
-    it "signs user in and out" do
+  describe 'Sessions' do
+    it 'signs user in and out' do
       user = FactoryBot.create(:user)
       sign_in user
 
@@ -16,8 +16,8 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #index" do
-    it "returns success" do
+  describe 'GET #index' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       get :index
@@ -25,12 +25,12 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    it "returns success" do
+  describe 'GET #show' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       get :show, params: { id: user.id }
-      expect(response).to render_template("show")
+      expect(response).to render_template('show')
       expect(response).to have_http_status(:success)
     end
   end

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
-  describe "GET #new" do
-    it "returns success" do
+  describe 'GET #new' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       get :new, params: { use_route: '/users/:user_id/posts/new', user_id: user.id }
@@ -12,8 +12,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    it "returns success" do
+  describe 'POST #create' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       attributes = { use_route: '/users/:user_id/posts',
@@ -26,8 +26,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET #index" do
-    it "returns success" do
+  describe 'GET #index' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       get :index, params: { use_route: '/users/:user_id/posts', user_id: user.id }
@@ -35,8 +35,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "returns success" do
+  describe 'GET #edit' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       post = FactoryBot.create(:post)
       sign_in user
@@ -45,15 +45,15 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "PATCH #update" do
-    it "returns success" do
+  describe 'PATCH #update' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       post = FactoryBot.create(:post)
       sign_in user
       attributes = { use_route: '/users/:user_id/posts/:id',
                      user_id: user.id,
                      id: post.id,
-                     post: {description: 'new text'} }
+                     post: {description: 'new text' } }
       patch :update, params: attributes
 
       post.reload
@@ -63,8 +63,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
-    it "returns success" do
+  describe 'DELETE #destroy' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       post = FactoryBot.create(:post)
       sign_in user
@@ -77,8 +77,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET #like" do
-    it "returns success" do
+  describe 'GET #like' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       post = FactoryBot.create(:post)
@@ -88,8 +88,8 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET #unlike" do
-    it "returns success" do
+  describe 'GET #unlike' do
+    it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
       post = FactoryBot.create(:post)
