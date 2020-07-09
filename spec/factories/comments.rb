@@ -1,5 +1,2 @@
-FactoryGirl.define do
-  factory :comment do
-    
-  end
+FactoryBot.define do
 end
