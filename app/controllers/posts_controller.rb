@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       notification.actor = post.user
       notification.user = post.user
       notification.target = post
-      notification.target_type = "Like"
+      notification.target_type = 'Like'
       notification.second_target = post
     end
   end
