@@ -4,12 +4,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from AbstractController::ActionNotFound, with: :not_found
 
-  def session_authenticate
-    redirect_to root_path unless current_user.present?
-  end
-
   def record_not_found
-    redirect_to page_path('not_found')
+    redirect_to root_path
   end
 
   def not_found

@@ -26,7 +26,7 @@
                   <% end %>
                 </dir>
                 <dir class="col-sm-6"> 
-                  <% if post.user == current_user %>    
+                  <% if post.user == current_user %>   
                     <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
                     <%= link_to 'Remove', user_post_path(current_user, post), method: :Delete, remote: true %>
                   <%end%>  

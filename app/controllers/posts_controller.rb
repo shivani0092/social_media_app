@@ -1,17 +1,21 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user_post, only: [:destroy, :edit, :update]
-  before_action :set_post, only: [:like, :unlike]
+  before_action :set_user
+  before_action :set_post, only: [:like, :unlike, :distroy]
 
+  def index
+    @posts = Post.all
+  end
+    
   def new
-    @post = current_user.posts.new
+    @post = @user.posts.new
   end
 
   def edit
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = @user.posts.build(post_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to users_path, notice: 'Post was successfully created.' }
@@ -47,6 +51,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = @user.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(post_params)
         format.html { redirect_to users_path, notice: 'Post was successfully updated.' }
@@ -63,13 +68,11 @@ class PostsController < ApplicationController
 
   private  
 
-    def set_user_post  
-      user = User.find(params[:user_id])
-      @post = user.posts.find(params[:id])
+    def set_user  
+      @user = User.find(params[:user_id])
     end
 
     def set_post
-      @user = User.find(params[:user_id])
       @post = Post.find(params[:id])
     end
       
