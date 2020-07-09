@@ -1,4 +1,4 @@
-module Notificational
+module CommentNotification
   extend ActiveSupport::Concern
   
   included do

@@ -2,10 +2,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_post, only: [:like, :unlike]
-  before_action :set_user_post, only: [:edit, :update, :destroy]
+  before_action :set_user_post, only: [:edit, :update, :destroy, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at ASC")
+  end
+  
+  def show 
+
   end
     
   def new
@@ -27,16 +31,16 @@ class PostsController < ApplicationController
   end
 
   def like
-    binding.pry
     like = @post.like
-    @post.update_column(:like, like.push(current_user.id))
+    @post.update_attribute(:like, like.push(current_user.id))
+    create_notification_for_like(@post)
     message = "liked your post"
     update_show(@user)
   end
 
   def unlike
     like = @post.like - [current_user.id]
-    @post.update_column(:like, like)
+    @post.update_attribute(:like, like)
     update_show(@user)
   end
 
@@ -67,6 +71,18 @@ class PostsController < ApplicationController
     update_show(@user)
   end
 
+  def create_notification_for_like(post)
+    post = post
+    Notification.create do |notification|
+      notification.notify_type = 'post'
+      notification.actor = post.user
+      notification.user = post.user
+      notification.target = post
+      notification.target_type = "Like"
+      notification.second_target = post
+    end
+  end
+  
   private  
 
     def set_user  

@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  include Notificational
+  include CommentNotification
 end
