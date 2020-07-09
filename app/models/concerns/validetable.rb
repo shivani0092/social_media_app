@@ -3,7 +3,7 @@ module Validetable
   
   included do
   	has_many :posts, dependent: :destroy
-  	has_many :comments, through: :posts
+  	has_many :comments
   	devise :database_authenticatable, :registerable,
   	       :recoverable, :rememberable, :validatable
   	validates :name, presence: true

@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:email).case_insensitive }
 
   describe 'associations' do
-    it { should have_many(:comments).through(:posts) }
+    it { should have_many(:comments) }
     it { should have_many(:posts).dependent(:destroy) }
   end
 
