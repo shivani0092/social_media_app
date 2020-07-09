@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :comment do
-    description { 'Ruby on Rails' }
     user_id { 1 }
     post_id { 1 }
+    description { 'comment text' }
+    created_at { Time.now }
+    updated_at { Time.now }
   end
 end
