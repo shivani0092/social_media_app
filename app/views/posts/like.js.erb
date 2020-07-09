@@ -1,2 +1,2 @@
-$("#show_posts").html("<%= j render partial: 'posts/posts', locals: {posts: @posts} %>");
-$('.notification_unread_count').html('<li><%= j pluralize(Notification.unread_count(current_user), '') %></li>');
+$('#show_posts').html("<%= j render partial: 'posts/posts', locals: { posts: @posts } %>");
+$('.notification_unread_count').html('<%= j pluralize(Notification.unread_count(current_user), '') %>');

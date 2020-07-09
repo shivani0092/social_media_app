@@ -8,5 +8,5 @@ module Uploadable
 
   def picture_size
     errors.add(:avatar, 'should be less than 1MB') if avatar.size > 1.megabytes
-  end  
-end 
+  end
+end

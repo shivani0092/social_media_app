@@ -1,9 +1,9 @@
 module PostsHelper
   def avatar_url(post)
     post&.avatar&.thumb&.url
-  end  
+  end
 
   def add_post_comment(post)
-  	post.comments.build
+    post.comments.build
   end
 end

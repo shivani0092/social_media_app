@@ -1,7 +1,7 @@
 <%= form_with(model: [current_user, @post], local: true) do |form| %>
   <% if post&.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(post.errors.count, 'error') %> prohibited this post from being saved:</h2>
       <ul>
         <% post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -9,25 +9,25 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= form.label :description, class: "control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= form.text_area :description, class: "form-control", placeholder: "What's on your mind?" %>
+  <div class='form-group'>
+    <%= form.label :description, class: 'control-label col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.text_area :description, class: 'form-control', placeholder: "What's on your mind?" %>
     </div>
   </div>
   <br/><br/><br/>
-  <div class="form-group">
-    <%= form.label "image/vedio", class: "control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= form.file_field :avatar, class: "form-control" %>
+  <div class='form-group'>
+    <%= form.label 'image/vedio', class: 'control-label col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.file_field :avatar, class: 'form-control' %>
     </div>
     <%= form.hidden_field :avatar_cache %>
   </div>  
   <br/><br/>  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10 login-btn">  
-      <%= form.submit "create post", class: "btn btn-default posr_create"%>
-      <%= link_to 'Back', users_path, class: "btn btn-default" %>
+  <div class='form-group'>
+    <div class='col-sm-offset-2 col-sm-10 login-btn'>  
+      <%= form.submit 'create post', class: 'btn btn-default posr_create'%>
+      <%= link_to 'Back', users_path, class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>

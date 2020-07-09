@@ -1,29 +1,29 @@
 <div id="<%= @post.id %>"><br/>
-  <div class="container user-login">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-10 col-md-8 col-lg-6 user-container">
-        <div class="row post-card">
-          <h2 class="align-middle"><%= @post.user.name.capitalize %>'s Post </h2>
-          <dir class="col-sm-5">
+  <div class='container user-login'>
+    <div class='row justify-content-center align-items-center'>
+      <div class='col-10 col-md-8 col-lg-6 user-container'>
+        <div class='row post-card'>
+          <h2 class='align-middle'><%= @post.user.name.capitalize %>'s Post </h2>
+          <dir class='col-sm-5'>
             <% if url = avatar_url(@post) %>
               <%= image_tag(url) %>
             <% end %> 
           </dir>
-          <dir class="col-sm-7">
+          <dir class='col-sm-7'>
             <%= @post.description %>
           </dir>
 
-          <dir class="col-sm-12 m-0 p-0 f-16">  
-            <dir class="col-sm-6">   
+          <dir class='col-sm-12 m-0 p-0 f-16'>  
+            <dir class='col-sm-6'>   
               <% like = @post.like %>
-              <%= "#{like.length} Like(s) | " %>
+              <%= '#{like.length} Like(s) | ' %>
               <% if like.include? current_user.id %>
                 <%= link_to 'UnLike', unlike_user_post_path(current_user, @post),method: :get, remote: true, class: 'unlike_post' %>
               <% else %>
                 <%= link_to 'Like', like_user_post_path(current_user, @post),method: :get, remote: true, class: 'like_post' %>
               <% end %>
             </dir>
-            <dir class="col-sm-6"> 
+            <dir class='col-sm-6'> 
               <% if @post.user == current_user %>   
                 <%= link_to 'Edit', edit_user_post_path(current_user, @post) %>
                 <%= link_to 'Remove', user_post_path(current_user, @post), method: :Delete, remote: true %>

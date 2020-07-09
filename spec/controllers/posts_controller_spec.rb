@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   include Devise::Test::ControllerHelpers
-
   describe 'GET #new' do
     it 'returns success' do
       user = FactoryBot.create(:user)
@@ -53,7 +52,7 @@ RSpec.describe PostsController, type: :controller do
       attributes = { use_route: '/users/:user_id/posts/:id',
                      user_id: user.id,
                      id: post.id,
-                     post: {description: 'new text' } }
+                     post: { description: 'new text' } }
       patch :update, params: attributes
 
       post.reload
@@ -99,5 +98,4 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to have_http_status(:redirect)
     end
   end
-
 end

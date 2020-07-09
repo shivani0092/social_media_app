@@ -8,8 +8,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order("created_at ASC")
   end
   
-  def show 
-
+  def show
   end
     
   def new
@@ -45,14 +44,14 @@ class PostsController < ApplicationController
   end
 
   def update_show(user)
-    @posts = params[:user_id] ? @user.posts : Post.all
+    @posts = params[:user_id] ? @user.posts.order('created_at ASC') : Post.all.order('created_at ASC')
     respond_to do |format|
       if params[:user_id].present?
         format.html { redirect_to user_path(@user) }
       else
-        format.html { redirect_to users_path } 
-      end   
-      format.js   {}
+        format.html { redirect_to users_path }
+      end
+      format.js {}
     end
   end
 
@@ -82,21 +81,21 @@ class PostsController < ApplicationController
     end
   end
   
-  private  
+  private
 
-    def set_user  
-      @user = User.find(params[:user_id])
-    end
-    
-    def set_user_post
-      @post = @user.posts.find(params[:id])
-    end  
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
-    def set_post
-      @post = Post.find(params[:id])
-    end
-      
-    def post_params
-      params.require(:post).permit(:user_id, :description, :avatar, :avatar_cache)
-    end
+  def set_user_post
+    @post = @user.posts.find(params[:id])
+  end
+  
+  def set_post
+    @post = Post.find(params[:id])
+  end
+  
+  def post_params
+    params.require(:post).permit(:user_id, :description, :avatar, :avatar_cache)
+  end
 end

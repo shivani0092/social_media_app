@@ -1,11 +1,11 @@
-<%= form_with(model:[user, post, comment], class: "add-comment", remote: true) do |form| %>
+<%= form_with(model:[user, post, comment], class: 'add-comment', remote: true) do |form| %>
   <%= form.hidden_field :user_id, value: user.id %>
-  <div class="form-group">
-    <dir class="col-sm-7">
-      <%= form.text_area :description, placeholder: "add comment", required: true, class: "form-control" %> 
+  <div class='form-group'>
+    <dir class='col-sm-7'>
+      <%= form.text_area :description, placeholder: 'add comment', required: true, class: 'form-control' %> 
     </dir>
-    <dir class="col-sm-5">
-      <%= form.submit "comment", class: "btn btn-default" %>
+    <dir class='col-sm-5'>
+      <%= form.submit 'comment', class: 'btn btn-default' %>
     </dir>
   </div>
 <% end %>
