@@ -32,9 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 gem 'jquery-rails'
 gem 'carrierwave'
-gem 'notifications', '~> 0.6.0'
 gem 'bootstrap-sass'
-gem 'bootstrap', '~> 4.0.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
