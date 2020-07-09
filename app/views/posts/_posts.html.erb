@@ -1,4 +1,4 @@
-<% if current_user.present? && posts.any? %>  
+<% if current_user.present? && posts&.any? %>  
   <h2 class="align-middle" >Posts</h1>
   <% posts.each do |post| %>
     <div id="<%= post.id %>"><br/>

@@ -35,8 +35,13 @@ class PostsController < ApplicationController
   end
 
   def update_show(user)
+    @posts = params[:user_id] ? @user.posts : Post.all
     respond_to do |format|
-      format.html { redirect_to users_path }
+      if params[:user_id].present?
+        format.html { redirect_to user_path(@user) }
+      else
+        format.html { redirect_to users_path } 
+      end   
       format.js   {}
     end
   end
