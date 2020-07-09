@@ -72,7 +72,6 @@ class PostsController < ApplicationController
   end
 
   def create_notification_for_like(post)
-    post = post
     Notification.create do |notification|
       notification.notify_type = 'post'
       notification.actor = post.user
