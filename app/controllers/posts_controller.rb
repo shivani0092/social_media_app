@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   end
 
   def like
+    binding.pry
     like = @post.like
     @post.update_column(:like, like.push(current_user.id))
     message = "liked your post"

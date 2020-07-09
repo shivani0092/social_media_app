@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Notifications::Engine => "/notifications"
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   root 'users#index'
   resources :users do 

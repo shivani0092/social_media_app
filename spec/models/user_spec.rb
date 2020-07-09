@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
                        password_confirmation: "123456")
   }
 
+  it { should validate_uniqueness_of(:email).case_insensitive }
+
   describe 'associations' do
     it { should have_many(:comments).through(:posts) }
     it { should have_many(:posts).dependent(:destroy) }

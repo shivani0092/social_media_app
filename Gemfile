@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'sass-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem 'notifications'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'bootstrap-sass'
@@ -44,7 +45,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_bot_rails'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'  
+  gem 'shoulda-matchers'
+  gem 'capybara', '>= 2.15'  
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -60,7 +62,6 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
