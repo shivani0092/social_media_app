@@ -1,5 +1,6 @@
 module Filterable
   extend ActiveSupport::Concern
+  
   included do
     before_action :authenticate_user!
     before_action :set_user
@@ -60,5 +61,5 @@ module Filterable
 
   def post_params
     params.require(:post).permit(:user_id, :description, :avatar, :avatar_cache)
-  end 
-end   
+  end
+end

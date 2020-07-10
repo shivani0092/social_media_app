@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
   include Filterable
+  include Indexable
 
-  def index
-    @posts = Post.all.order("created_at ASC")
-  end
-  
   def show
   end
     
