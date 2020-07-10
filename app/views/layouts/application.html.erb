@@ -20,7 +20,7 @@
         <div class="navbar-header">
           <% if user_signed_in? %>
             <div class="navbar-brand">
-              <%= image_tag(avatar_url(@user), class: 'img-circle') %>
+              <%= image_tag(avatar_url(current_user), class: 'img-circle') %>
               <%= link_to "#{current_user&.name[0..12]}", "#", title: "#{current_user&.name}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
             </div>
           <% end %>
