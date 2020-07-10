@@ -15,7 +15,12 @@
       <%= form.text_area :description, class: 'form-control', placeholder: "What's on your mind?" %>
     </div>
   </div>
-  <br/><br/><br/>
+  <br/><br/><br/> 
+  <% if url = avatar_url(post) %>
+    <div class='form-group avatar-align'>
+      <%= image_tag(url) %>
+    </div>  
+  <% end %>
   <div class='form-group'>
     <%= form.label 'image/vedio', class: 'control-label col-sm-2' %>
     <div class='col-sm-10'>

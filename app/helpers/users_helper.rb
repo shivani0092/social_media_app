@@ -1,6 +1,6 @@
 module UsersHelper
   def user_posts(user)
-    user.posts.order("created_at ASC")
+    user.posts.order("created_at DESC")
   end
   
   def avatar_url(user)

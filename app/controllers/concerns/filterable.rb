@@ -34,7 +34,7 @@ module Filterable
   end
 
   def update_show(user)
-    @posts = params[:user_id] ? @user.posts.order('created_at ASC') : Post.all.order('created_at ASC')
+    @posts = params[:user_id] ? @user.posts.order('created_at DESC') : Post.all.order('created_at DESC')
     respond_to do |format|
       if params[:user_id].present?
         format.html { redirect_to user_path(@user) }

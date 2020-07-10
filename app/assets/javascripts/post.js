@@ -16,11 +16,5 @@ $(document).on("turbolinks:load",function(){
     }
   });
 
-  var descriptionInputLength = $('#post_description').val().length;
-  var imagelength = $('#post_avatar').val().length;
-  if (descriptionInputLength >= 1 || imagelength >= 1) {
-    $('.posr_create').prop('disabled',false);
-  } else {
-    $('.posr_create').prop('disabled',true);
-  }
+  $('.posr_create').prop('disabled',true);
 }); 
