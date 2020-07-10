@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         get 'like', to: "posts#like"
         get 'unlike', to: "posts#unlike"
       end
-      resources :comments, only: [:create, :index]
+      resources :comments, shallow: true
     end
   end
 end

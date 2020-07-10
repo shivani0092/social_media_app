@@ -1,6 +1,6 @@
 module Notifications
   class NotificationsController < Notifications::ApplicationController
-    before_action :authenticate_user!, only: [:show, :index]
+    before_action :authenticate_user!, only: [:clean, :index]
 
     def index
       @notifications = notifications.includes(:actor).order('id desc').page(params[:page])
