@@ -2,8 +2,6 @@ module Validetable
   extend ActiveSupport::Concern
   
   included do
-    has_many :posts, dependent: :destroy
-    has_many :comments
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable
     validates :name, presence: true

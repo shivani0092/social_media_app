@@ -1,8 +1,7 @@
 module CommentNotification
   extend ActiveSupport::Concern
+  
   included do
-    belongs_to :user
-    belongs_to :post
     after_commit :create_notifications, on: :create
   end
   
