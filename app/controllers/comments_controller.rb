@@ -1,8 +1,7 @@
 # CommentController
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_post, only: [:create, :index]
-
+  before_action :set_post, only: [:create]
+  
   def create
     @comment = @post.comments.create(comment_params)
     respond_to do |format|
@@ -10,8 +9,6 @@ class CommentsController < ApplicationController
       format.js {}
     end
   end
-
-  def index; end
 
   private
 

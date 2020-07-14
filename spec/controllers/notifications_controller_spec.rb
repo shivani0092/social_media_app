@@ -16,7 +16,8 @@ RSpec.describe Notifications::NotificationsController, type: :controller do
     it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
-      post = FactoryBot.create(:post)
+      user1 = FactoryBot.create(:user1)
+      post = FactoryBot.create(:post, user_id: user1.id)
       comment = FactoryBot.create(:comment, post_id: post.id)
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post)
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post, target_type: 'Like')
