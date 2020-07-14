@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users do
     resources :posts do
-      resources :comments, shallow: true
+      resources :comments, only: [:create]
     end
+  end
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
   end
   mount Notifications::Engine => "/notifications"
 end

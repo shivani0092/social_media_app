@@ -3,6 +3,20 @@
     <div class='row justify-content-center align-items-center'>
       <div class='col-10 col-md-8 col-lg-6 user-container'>
         <div class='row post-card'>
+          <div class="row post_user_details">
+            <dir class='col-sm-8'> 
+              <%= image_tag(avatar_url(post.user), class: 'img-circle') %>
+              <%= link_to "#{post&.user&.name[0..30]}", "#", title: "#{post&.user&.name}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+            </dir>
+            <% if post.user == current_user %>   
+              <dir class='col-sm-1 links-post'>
+                <%= link_to fa_icon('edit'), edit_user_post_path(current_user, post) %>
+              </dir>
+              <dir class='col-sm-1 links-post'>
+                <%= link_to fa_icon('window-close'), user_post_path(current_user, post), method: :Delete, remote: true %>
+              </dir>  
+            <%end%>    
+          </div>
           <h2 class='align-middle'><%= @post.user.name.capitalize %>'s Post </h2>
           <dir class='col-sm-5'>
             <% if url = avatar_url(@post) %>
@@ -14,10 +28,8 @@
           </dir>
           <dir class='col-sm-12 m-0 p-0 f-16'>  
             <dir class='col-sm-6'> 
-              <% if @post.user == current_user %>   
-                <%= link_to 'Edit', edit_user_post_path(current_user, @post) %>
-                <%= link_to 'Remove', user_post_path(current_user, @post), method: :Delete, remote: true %>
-              <%end%>  
+              <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <%= button_to 'Like', user_post_likes_path(@post, current_user), method: :post %>
             </dir>  
           </dir>   
             <%= render 'comments/comment', post: @post %>

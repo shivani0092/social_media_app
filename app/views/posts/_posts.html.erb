@@ -29,12 +29,7 @@
                 <%= post.description %>
               </dir>
               <dir class='col-sm-12 m-0 p-0 f-16'>  
-                <dir class='col-sm-6'> 
-                  <% if post.user == current_user %>   
-                    <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
-                    <%= link_to 'Remove', user_post_path(current_user, post), method: :Delete, remote: true %>
-                  <%end%>  
-                </dir>  
+                <%= render 'likes/create', post: post %>
               </dir> 
               <%= render 'comments/comment', post: post %>
             </div>    
