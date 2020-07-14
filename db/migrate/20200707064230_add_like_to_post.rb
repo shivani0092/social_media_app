@@ -1,4 +1,4 @@
-class AddLikeToPost < ActiveRecord::Migration[6.0]
+class AddLikeToPost < ActiveRecord::Migration[5.2]
   def change
     add_column :posts, :like, :integer, array: true, default: '{}'
   end

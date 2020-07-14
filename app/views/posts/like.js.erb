@@ -1,2 +1,0 @@
-$('#show_posts').html("<%= j render partial: 'posts/posts', locals: { posts: user_posts(@user) } %>");
-$('.notification_unread_count').html('<%= j pluralize(Notification.unread_count(current_user), '') %>');

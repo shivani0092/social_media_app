@@ -75,27 +75,4 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to have_http_status(:redirect)
     end
   end
-
-  describe 'PATCH #like' do
-    it 'returns success' do
-      user = FactoryBot.create(:user)
-      sign_in user
-      post = FactoryBot.create(:post)
-      post.update_attribute(:like, post.like.push(user.id))
-      get :like, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }, xhr: true
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'PATCH #unlike' do
-    it 'returns success' do
-      user = FactoryBot.create(:user)
-      sign_in user
-      post = FactoryBot.create(:post)
-      like = post.like - [user.id]
-      post.update_attribute(:like, like)
-      get :unlike, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }, xhr: true
-      expect(response).to have_http_status(:success)
-    end
-  end
 end

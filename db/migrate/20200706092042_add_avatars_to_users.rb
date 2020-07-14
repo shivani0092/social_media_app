@@ -1,4 +1,4 @@
-class AddAvatarsToUsers < ActiveRecord::Migration[6.0]
+class AddAvatarsToUsers < ActiveRecord::Migration[5.2]
   def change
   end
 end

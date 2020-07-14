@@ -1,7 +1,7 @@
-<% if post_comments(post).any? %>  
+<% if post.comments.any? %>  
   <div id="comments_<%= post.id %>">
     <ul class='list-group'>
-      <% post_comments(post).each do |comment| %>
+      <% post.comments.each do |comment| %>
         <div class='col-sm-12 btn comment-subcontainer'>
           <li class='list-group-item'>
             <p><b><%= comment&.user&.name %></b></p>

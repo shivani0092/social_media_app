@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users do
     resources :posts do
-      member do
-        patch 'like', to: "posts#like"
-        patch 'unlike', to: "posts#unlike"
-      end
       resources :comments, shallow: true
     end
   end
