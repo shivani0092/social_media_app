@@ -1,2 +1,2 @@
 $("#likes_<%= @post.id %>").html("<%= j render partial: 'likes/create', locals: { post: @post } %>");
-$('.notification_unread_count').html('<%= j pluralize(Notification.unread_count(current_user), '') %>');
+$('#notification_unread_count').html('<%= j pluralize(Notification.unread_count(current_user), '') %>');

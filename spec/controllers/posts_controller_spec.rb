@@ -67,12 +67,8 @@ RSpec.describe PostsController, type: :controller do
       user = FactoryBot.create(:user)
       post = FactoryBot.create(:post)
       sign_in user
-      attributes = { use_route: '/users/:user_id/posts/:id',
-                     user_id: user.id,
-                     id: post.id }
-
-      expect { delete :destroy, params: attributes }.to change(Post, :count).by(-1)
-      expect(response).to have_http_status(:redirect)
+      attributes = { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }
+      expect { delete :destroy, params: attributes, xhr: true }.to change(Post, :count).by(-1)
     end
   end
 end

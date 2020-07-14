@@ -25,15 +25,11 @@
           </dir>
           <dir class='col-sm-7'>
             <%= @post.description %>
-          </dir>
-          <dir class='col-sm-12 m-0 p-0 f-16'>  
-            <dir class='col-sm-6'> 
-              <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-              <%= button_to 'Like', user_post_likes_path(@post, current_user), method: :post %>
-            </dir>  
-          </dir>   
-            <%= render 'comments/comment', post: @post %>
-          </div> 
+          </dir>  
+          <dir class='col-sm-12 f-16'>  
+            <%= render 'likes/create', post: @post %>
+          </dir> 
+          <%= render 'comments/comment', post: @post %>
         </div>    
       </div>
     </div>

@@ -37,7 +37,7 @@
             <li><%= link_to 'Edit profile', main_app.edit_user_registration_path %></li>
             <li><%= link_to 'Logout', main_app.destroy_user_session_path, method: :delete %></li>
             <li class="link-notifications"><%= link_to fa_icon("bell"), notifications_path %></li>
-            <span class='notification_unread_count'>
+            <span id='notification_unread_count'>
               <%= pluralize(Notification.unread_count(current_user), '')%>
             </span>
           <%else%>

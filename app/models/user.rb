@@ -5,7 +5,7 @@ class User < ApplicationRecord
   include Uploadable
   has_many :posts, dependent: :destroy
   has_many :comments
-  has_many :likes, dependent: :destroy
+  has_many :likes
   has_many :notifications, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

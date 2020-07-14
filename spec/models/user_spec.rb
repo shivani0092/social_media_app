@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:comments) }
     it { should have_many(:posts).dependent(:destroy) }
+    it { should have_many(:likes) }
   end
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
