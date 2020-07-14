@@ -1,1 +1,1 @@
-$('#show_posts').html("<%= j render partial: 'posts/posts', locals: { posts: @posts } %>");
+$('#show_posts').html("<%= j render partial: 'posts/posts', locals: { posts: user_posts(@user) %>");

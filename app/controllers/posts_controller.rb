@@ -61,8 +61,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def update_show(user)
-    @posts = params[:user_id] ? @user.posts.order('created_at DESC') : Post.all.order('created_at DESC')
+  def update_show(user)   
     respond_to do |format|
       if params[:user_id].present?
         format.html { redirect_to user_path(@user) }
