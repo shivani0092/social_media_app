@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
-  include Filterable
   include Indexable
-
+  before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_post, only: [:like, :unlike]
+  before_action :set_user_post, only: [:edit, :update, :destroy, :show]
+  
   def show
   end
     
@@ -76,6 +79,18 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_user_post
+    @post = @user.posts.find(params[:id])
+  end
+  
+  def set_post
+    @post = Post.find(params[:id])
+  end 
 
   def post_params
     params.require(:post).permit(:user_id, :description, :avatar, :avatar_cache)
