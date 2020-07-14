@@ -1,3 +1,4 @@
+# CommentController
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:create, :index]
@@ -10,8 +11,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def index
-  end
+  def index; end
 
   private
 

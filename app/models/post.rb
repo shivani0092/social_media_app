@@ -1,3 +1,4 @@
+# Post
 class Post < ApplicationRecord
   include Uploadable
   belongs_to :user

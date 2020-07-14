@@ -1,18 +1,16 @@
+# PostsController
 class PostsController < ApplicationController
   include Indexable
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_user_post, only: [:edit, :update, :destroy, :show]
-  
-  def show
-  end
-    
+  def show; end
+
   def new
     @post = @user.posts.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = @user.posts.build(post_params)

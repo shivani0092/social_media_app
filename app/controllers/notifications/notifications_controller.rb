@@ -1,4 +1,5 @@
 module Notifications
+  # NotificationsController
   class NotificationsController < Notifications::ApplicationController
     before_action :authenticate_user!, only: [:clean, :index]
 

@@ -8,9 +8,7 @@ RSpec.describe CommentsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
       post = FactoryBot.create(:post)
-      get :index, params: { user_routes: '/users/:user_id/posts/:post_id/comments',
-                            user_id: user.id,
-                            post_id: post.id }, xhr: true
+      get :index, params: { user_routes: '/users/:user_id/posts/:post_id/comments', user_id: user.id, post_id: post.id }, xhr: true
       expect(response).to have_http_status(:success)
     end
   end
@@ -25,13 +23,7 @@ RSpec.describe CommentsController, type: :controller do
                      description: 'comment text',
                      created_at: Time.now,
                      updated_at: Time.now }
-
-      expect { post :create, params: 
-        { user_routes: '/users/:user_id/posts/:post_id/comments',
-          user_id: user.id,
-          post_id: post_one.id,
-          comment: attributes }, xhr: true }.to change(Comment, :count).by(1)
+      expect { post :create, params: { user_routes: '/users/:user_id/posts/:post_id/comments', user_id: user.id, post_id: post_one.id, comment: attributes }, xhr: true }.to change(Comment, :count).by(1)
     end
   end
-
 end

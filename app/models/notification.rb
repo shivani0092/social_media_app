@@ -5,5 +5,4 @@ class Notification < ActiveRecord::Base
   def target_type_like?
     target_type == 'Like'
   end
-
 end

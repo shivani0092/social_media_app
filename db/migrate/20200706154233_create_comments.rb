@@ -1,4 +1,5 @@
-class CreateComments < ActiveRecord::Migration[6.0]
+# This migration comes from notifications
+class CreateComments < ActiveRecord::Migration[5.2]
   def change
     create_table :comments do |t|
       t.references :user, null: false, foreign_key: true

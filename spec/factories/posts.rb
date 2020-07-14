@@ -1,4 +1,3 @@
-
 FactoryBot.define do
   factory :post do
     description { 'Ruby on Rails' }

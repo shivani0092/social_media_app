@@ -12,11 +12,9 @@ class CreateNotifications < ActiveRecord::Migration[5.0]
       t.string :third_target_type
       t.integer :third_target_id
       t.datetime :read_at
-
       t.timestamps null: false
     end
-
-    add_index :notifications, %i[user_id notify_type]
+    add_index :notifications, [:user_id, :notify_type]
     add_index :notifications, [:user_id]
   end
 end
