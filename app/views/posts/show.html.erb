@@ -18,9 +18,9 @@
               <% like = @post.like %>
               <%= '#{like.length} Like(s) | ' %>
               <% if like.include? current_user.id %>
-                <%= link_to 'UnLike', unlike_user_post_path(current_user, @post),method: :get, remote: true, class: 'unlike_post' %>
+                <%= link_to 'UnLike', unlike_user_post_path(current_user, @post),method: :patch, remote: true, class: 'unlike_post' %>
               <% else %>
-                <%= link_to 'Like', like_user_post_path(current_user, @post),method: :get, remote: true, class: 'like_post' %>
+                <%= link_to 'Like', like_user_post_path(current_user, @post),method: :patch, remote: true, class: 'like_post' %>
               <% end %>
             </dir>
             <dir class='col-sm-6'> 
