@@ -82,8 +82,8 @@ RSpec.describe PostsController, type: :controller do
       sign_in user
       post = FactoryBot.create(:post)
       post.update_attribute(:like, post.like.push(user.id))
-      get :like, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }
-      expect(response).to have_http_status(:redirect)
+      get :like, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }, xhr: true
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -94,8 +94,8 @@ RSpec.describe PostsController, type: :controller do
       post = FactoryBot.create(:post)
       like = post.like - [user.id]
       post.update_attribute(:like, like)
-      get :unlike, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }
-      expect(response).to have_http_status(:redirect)
+      get :unlike, params: { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }, xhr: true
+      expect(response).to have_http_status(:success)
     end
   end
 end
