@@ -76,7 +76,7 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe 'GET #like' do
+  describe 'PATCH #like' do
     it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
@@ -87,7 +87,7 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe 'GET #unlike' do
+  describe 'PATCH #unlike' do
     it 'returns success' do
       user = FactoryBot.create(:user)
       sign_in user
