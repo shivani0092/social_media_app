@@ -1,6 +1,6 @@
 <div id="likes_<%= post.id %>">
-  <%= post.likes.count %>
-  <%= (post.likes.count) == 1 ? 'Like' : 'Likes' %>
+  <%= post_length = post.likes.length %>
+  <%= (post_length) == 1 ? 'Like' : 'Likes' %>
   <% previous_like = post.likes.find { |like| like.user_id == current_user.id} %>
   <% if previous_like %>
     <%= link_to 'Unlike', post_like_path(post, previous_like), method: :delete, remote: true  %>

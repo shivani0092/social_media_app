@@ -6,7 +6,7 @@
           <div class="row post_user_details">
             <dir class='col-sm-8'> 
               <%= image_tag(avatar_url(@post.user), class: 'img-circle') %>
-              <%= link_to "#{@post.user.name[0..30]}", "#", title: "#{@post.user.name}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+              <%= link_to "#{post_user(@post)[0..30]}", "#", title: "#{post_user(@post)}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
             </dir>
             <% if post.user == current_user %>   
               <dir class='col-sm-1 links-post'>
@@ -17,7 +17,7 @@
               </dir>  
             <%end%>    
           </div>
-          <h2 class='align-middle'><%= @post.user.name.capitalize %>'s Post </h2>
+          <h2 class='align-middle'><%= post_user(@post).capitalize %>'s Post </h2>
           <dir class='col-sm-5'>
             <% if url = avatar_url(@post) %>
               <%= image_tag(url) %>

@@ -1,10 +1,10 @@
-<% if post.comments.any? %>  
+<% if post.comments.user_comments.any? %>  
   <div id="comments_<%= post.id %>">
     <ul class='list-group'>
-      <% post.comments.includes(:user).each do |comment| %>
+      <% post.comments.user_comments.each do |comment| %>
         <div class='col-sm-12 btn comment-subcontainer'>
           <li class='list-group-item'>
-            <p><b><%= comment&.user&.name %></b></p>
+            <p><b><%= comment.user.name %></b></p>
             <p><%= comment.description %></p>
           </li>
         </div>  

@@ -2,6 +2,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
+  scope :user_comments, -> { includes(:user).where("user_id IS NOT NULL") }
   after_commit :create_notifications, on: :create, unless: :is_not_current_user?
 
   def is_not_current_user?

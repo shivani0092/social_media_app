@@ -14,5 +14,5 @@
 </div> 
 <br/>
 <div id='show_posts'>
-  <%= render partial: 'posts/posts', locals: { posts: @posts } %>
+  <%= render partial: 'posts/posts', locals: { posts: Post.user_posts(@user) } %>
 </div>
