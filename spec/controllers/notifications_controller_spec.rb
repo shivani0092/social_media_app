@@ -11,4 +11,18 @@ RSpec.describe Notifications::NotificationsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe 'DELETE #clean' do
+    it 'returns success' do
+      user1 = FactoryBot.create(:user, id:2, email: 'shivani.guptatest@gmail.com', name: 'user2')
+      sign_in user1
+      post = FactoryBot.create(:post, user_id: user1.id)
+      comment = FactoryBot.create(:comment, post_id: post.id, user_id: user1.id)
+      FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post)
+      FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post, target_type: 'Like')
+      delete :clean, params: { use_route: '/notifications/notifications' }
+      expect(Notification.all).to eq([])
+      expect(response).to have_http_status(:redirect)
+    end
+  end
 end
