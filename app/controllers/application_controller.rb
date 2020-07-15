@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from AbstractController::ActionNotFound, with: :not_found
 
   def record_not_found
-    redirect_to root_path, notice: "Sorry, reccord not found"
+    redirect_to root_path, notice: 'Sorry, reccord not found'
   end
 
   def not_found

@@ -12,9 +12,9 @@ RSpec.describe Comment, type: :model do
         user = FactoryBot.create(:user)
         user1 = FactoryBot.create(:user, id: 2, email: 'shivani.guptatest@gmail.com', name: 'user2')
         post = FactoryBot.create(:post, user_id: user.id)
-        commit = FactoryBot.create(:comment, user_id: user1.id, post_id: post.id)
+        FactoryBot.create(:comment, user_id: user1.id, post_id: post.id)
         expect(user.notifications[0].user_id).to eq user.id
-      end 
+      end
     end
   end
 end

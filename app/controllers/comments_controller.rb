@@ -1,11 +1,11 @@
 # CommentController
 class CommentsController < ApplicationController
-  before_action :set_post, only: %w(create)
-  
+  before_action :set_post, only: %w[create]
+
   def create
     @comment = @post.comments.create(comment_params)
     respond_to do |format|
-      format.html { }
+      format.html {}
       format.js {}
     end
   end

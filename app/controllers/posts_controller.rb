@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   include Indexable
   before_action :authenticate_user!
   before_action :set_user
-  before_action :set_user_post, only: [:edit, :update, :destroy, :show]
+  before_action :set_user_post, only: %w[edit update destroy show]
   def show; end
 
   def new
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def set_user_post
-    @post = @user.posts.find_by(params[:id])
+    @post = @user.posts.find_by_id(params[:id])
   end
 
   def post_params

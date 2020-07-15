@@ -65,8 +65,8 @@ RSpec.describe PostsController, type: :controller do
   describe 'DELETE #destroy' do
     it 'returns success' do
       user = FactoryBot.create(:user)
-      post = FactoryBot.create(:post)
       sign_in user
+      post = FactoryBot.create(:post)
       attributes = { use_route: '/users/:user_id/posts/:id', user_id: user.id, id: post.id }
       expect { delete :destroy, params: attributes, xhr: true }.to change(Post, :count).by(-1)
     end
