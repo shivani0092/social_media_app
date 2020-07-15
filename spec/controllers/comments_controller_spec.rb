@@ -8,12 +8,13 @@ RSpec.describe CommentsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
       post_one = FactoryBot.create(:post)
-      attributes = { user_id: 1,
-                     post_id: 1,
-                     description: 'comment text',
-                     created_at: Time.now,
-                     updated_at: Time.now }
-      expect { post :create, params: { user_routes: '/users/:user_id/posts/:post_id/comments', user_id: user.id, post_id: post_one.id, comment: attributes }, xhr: true }.to change(Comment, :count).by(1)
+      attributes = { user_routes: '/users/:user_id/posts/:post_id/comments', user_id: user.id, post_id: post_one.id,
+                     comment: { user_id: 1,
+                                post_id: 1,
+                                description: 'comment text',
+                                created_at: Time.now,
+                                updated_at: Time.now } }
+      expect { post :create, params: attributes, xhr: true }.to change(Comment, :count).by(1)
     end
   end
 end
