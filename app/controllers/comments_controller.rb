@@ -1,11 +1,11 @@
 # CommentController
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:create]
+  before_action :set_post, only: %w(create)
   
   def create
     @comment = @post.comments.create(comment_params)
     respond_to do |format|
-      format.html { redirect_to users_path }
+      format.html { }
       format.js {}
     end
   end
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by_id(params[:post_id])
   end
 
   def comment_params

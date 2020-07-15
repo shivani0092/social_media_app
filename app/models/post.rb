@@ -6,6 +6,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   
   def liked?(user)
-  	likes.collect(&:user_id).include?(user.id)
+  	likes.where(user_id: user.id).any?
   end
 end

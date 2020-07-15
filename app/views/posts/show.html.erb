@@ -5,8 +5,8 @@
         <div class='row post-card'>
           <div class="row post_user_details">
             <dir class='col-sm-8'> 
-              <%= image_tag(avatar_url(post.user), class: 'img-circle') %>
-              <%= link_to "#{post&.user&.name[0..30]}", "#", title: "#{post&.user&.name}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+              <%= image_tag(avatar_url(@post.user), class: 'img-circle') %>
+              <%= link_to "#{@post.user.name[0..30]}", "#", title: "#{@post.user.name}", 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
             </dir>
             <% if post.user == current_user %>   
               <dir class='col-sm-1 links-post'>

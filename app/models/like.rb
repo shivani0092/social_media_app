@@ -4,7 +4,7 @@ class Like < ApplicationRecord
   after_commit :create_notifications, on: :create, unless: :is_not_current_user?
 
   def is_not_current_user?
-    post.user == user
+    post.user.id == user.id
   end  
 
   def create_notifications

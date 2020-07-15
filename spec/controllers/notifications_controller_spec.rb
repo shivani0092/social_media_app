@@ -21,8 +21,10 @@ RSpec.describe Notifications::NotificationsController, type: :controller do
       comment = FactoryBot.create(:comment, post_id: post.id, user_id: user1.id)
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post)
       FactoryBot.create(:notification, actor: comment.user, user: comment.post.user, target: comment, second_target: post, target_type: 'Like')
+      binding.pry
       delete :clean, params: { use_route: '/notifications/notifications' }
       expect(Notification.all).to eq([])
+      binding.pry
       expect(response).to have_http_status(:redirect)
     end
   end

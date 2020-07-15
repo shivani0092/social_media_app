@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def create
     like = @post.likes.create(user_id: current_user.id)
     respond_to do |format|
-      format.html { redirect_to users_path }
+      format.html {}
       format.js {}
     end
   end
@@ -13,7 +13,7 @@ class LikesController < ApplicationController
     like = Like.find(params[:id])
     like.destroy
     respond_to do |format|
-      format.html { redirect_to users_path }
+      format.html {}
       format.js {}
     end
   end
@@ -21,7 +21,7 @@ class LikesController < ApplicationController
   private
 
   def find_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by_id(params[:post_id])
   end
 
   def like_params

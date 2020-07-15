@@ -36,11 +36,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      if params[:user_id].present?
-        format.html { redirect_to user_path(@user) }
-      else
-        format.html { redirect_to users_path }
-      end
+      format.html {}
       format.js {}
     end
   end
@@ -48,11 +44,11 @@ class PostsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by_id(params[:user_id])
   end
 
   def set_user_post
-    @post = @user.posts.find(params[:id])
+    @post = @user.posts.find_by(params[:id])
   end
 
   def post_params
