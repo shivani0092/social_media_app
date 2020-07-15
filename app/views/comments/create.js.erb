@@ -1,3 +1,2 @@
 $("#comments_<%= @post.id %>").html("<%= j render partial: 'comments/index', locals: { post: @post } %>");
-$('#comment_description').val();
-$('#notification_unread_count').html('<%= j pluralize(Notification.unread_count(current_user), '') %>');
+$(".create-comments").html("<%= j render partial: 'comments/create', locals: { post: @post } %>");
