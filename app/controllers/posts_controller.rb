@@ -44,11 +44,11 @@ class PostsController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by_id(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def set_user_post
-    @post = @user.posts.find_by(params[:id])
+    @post = @user.posts.find(params[:id])
   end
 
   def post_params
