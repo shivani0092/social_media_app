@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LikesController, type: :controller do
   include Devise::Test::ControllerHelpers
- 
+
   describe 'POST #create' do
     it 'returns success' do
       user = FactoryBot.create(:user)

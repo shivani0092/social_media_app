@@ -18,7 +18,7 @@ RSpec.describe PostsController, type: :controller do
       attributes = { use_route: '/users/:user_id/posts',
                      user_id: user.id,
                      post: { description: 'Ruby on Rails', avatar: '/assets/images/image.jpg',
-                     user_id: 1 } }
+                             user_id: 1 } }
       expect { post :create, params: attributes }.to change(Post, :count).by(1)
       expect(response).to have_http_status(:redirect)
       expect(response).to redirect_to(users_url(assigns(:posts)))
