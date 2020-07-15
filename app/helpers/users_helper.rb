@@ -5,7 +5,7 @@ module UsersHelper
   end
 
   def check_traget(notification)
-    description = notification.second_target&.description
-    description.nil? ? second_target&.avatar&.thumb&.url : description
+    second_target = notification.second_target
+    second_target&.description.present? ? second_target.description : second_target&.avatar&.thumb&.url
   end
 end
